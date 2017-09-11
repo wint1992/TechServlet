@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: a.chuchalin
+Class-Path: lib/model-1.jar
+Built-By: a.chuchalin
