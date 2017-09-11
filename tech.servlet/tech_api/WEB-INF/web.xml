@@ -6,6 +6,7 @@
    <servlet>
       <servlet-name>tech_servlet</servlet-name>
       <servlet-class>ru.chuchalin.tech.servlet.TechApiServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
    </servlet>
  
    <servlet-mapping>

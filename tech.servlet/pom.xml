@@ -19,7 +19,19 @@
 		<artifactId>javax.servlet-api</artifactId>
 		<version>3.1.0</version>
 	</dependency>
+	<dependency>
+		<groupId>ru.chuchalin</groupId>
+		<artifactId>tech.model</artifactId>
+		<version>1</version>
+	</dependency>
   </dependencies>
+  
+  <distributionManagement>
+  	<repository>
+  		<id>git-repository-model</id>
+  		<url>https://github.com/wint1992/TechModel/tree/master/</url>
+  	</repository>
+  </distributionManagement>
   
   <build>
         <plugins>
@@ -77,5 +89,5 @@
 				</configuration>
 			</plugin>
        </plugins>
-      </build>
+      </build>   
 </project>
