@@ -20,19 +20,32 @@
 		<version>3.1.0</version>
 	</dependency>
 	<dependency>
-		<groupId>ru.chuchalin</groupId>
-		<artifactId>tech.model</artifactId>
-		<version>1</version>
+        <groupId>com.graphql-java</groupId>
+        <artifactId>graphql-java</artifactId>
+        <version>4.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>5.2.10.Final</version>
+	</dependency>
+ 	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-c3p0</artifactId>
+	    <version>5.2.10.Final</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.1.1</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.8.1</version>
 	</dependency>
   </dependencies>
-  
-  <distributionManagement>
-  	<repository>
-  		<id>git-repository-model</id>
-  		<url>https://github.com/wint1992/TechModel/tree/master/</url>
-  	</repository>
-  </distributionManagement>
-  
+    
   <build>
         <plugins>
             <plugin>

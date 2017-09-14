@@ -1,0 +1,15 @@
+<hibernate-mapping package="ru.chuchalin.tech.model">
+	<class name="EventAddress" table="oltp.event_address">
+		<id name="eventAddressID" column="id" type="java.lang.Integer">
+			<generator class="increment" />
+		</id>
+		<property name="place" column="place_name" type="java.lang.String" />
+		<!-- <many-to-one name="city" column="city_id" class="City" /> -->
+		<property name="street" column="street" type="java.lang.String" />
+		<property name="house" column="house" type="java.lang.String" />
+		<property name="building" column="building" type="java.lang.String" />
+		<property name="construction" column="construction" type="java.lang.String" />
+		<property name="fullAddress" column="full_address" type="java.lang.String" />
+		<property name="gps" column="gps" type="java.lang.String" />
+	</class>	
+</hibernate-mapping>

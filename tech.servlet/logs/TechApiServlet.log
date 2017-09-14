@@ -1,0 +1,59 @@
+INFO-(2017-09-14T18:22:56)- TechApiServlet.init() Begin
+INFO-(2017-09-14T18:22:56)- HibernateUtil START
+INFO-(2017-09-14T18:22:56)- HibernateUtil sessionFactory START
+INFO-(2017-09-14T18:22:56)- HibernateUtil sessionFactory EXCEPTION: org.hibernate.internal.util.config.ConfigurationException: Could not locate cfg.xml resource [hibernate.cfg.xml]
+	at org.hibernate.boot.cfgxml.internal.ConfigLoader.loadConfigXmlResource(ConfigLoader.java:53)
+	at org.hibernate.boot.registry.StandardServiceRegistryBuilder.configure(StandardServiceRegistryBuilder.java:163)
+	at org.hibernate.cfg.Configuration.configure(Configuration.java:258)
+	at org.hibernate.cfg.Configuration.configure(Configuration.java:244)
+	at ru.chuchalin.tech.model.dao.HibernateUtil.init(HibernateUtil.java:42)
+	at ru.chuchalin.tech.servlet.TechApiServlet.init(TechApiServlet.java:39)
+	at ru.chuchalin.tech.servlet.TechApiServlet.main(TechApiServlet.java:28)
+
+INFO-(2017-09-14T18:22:56)- init() EXCEPTION: 
+init END
+INFO-(2017-09-14T18:45:27)- TechApiServlet.init() Begin
+INFO-(2017-09-14T18:45:27)- HibernateUtil START
+INFO-(2017-09-14T18:45:27)- HibernateUtil sessionFactory START
+INFO-(2017-09-14T18:45:27)- HibernateUtil sessionFactory EXCEPTION: org.hibernate.internal.util.config.ConfigurationException: Could not locate cfg.xml resource [./hibernate.cfg.xml]
+	at org.hibernate.boot.cfgxml.internal.ConfigLoader.loadConfigXmlResource(ConfigLoader.java:53)
+	at org.hibernate.boot.registry.StandardServiceRegistryBuilder.configure(StandardServiceRegistryBuilder.java:163)
+	at org.hibernate.cfg.Configuration.configure(Configuration.java:258)
+	at ru.chuchalin.tech.model.dao.HibernateUtil.init(HibernateUtil.java:42)
+	at ru.chuchalin.tech.servlet.TechApiServlet.init(TechApiServlet.java:39)
+	at ru.chuchalin.tech.servlet.TechApiServlet.main(TechApiServlet.java:28)
+
+INFO-(2017-09-14T18:45:27)- init() EXCEPTION: 
+init END
+INFO-(2017-09-14T18:52:11)- TechApiServlet.init() Begin
+INFO-(2017-09-14T18:52:11)- HibernateUtil START
+INFO-(2017-09-14T18:52:11)- HibernateUtil sessionFactory START
+INFO-(2017-09-14T18:53:20)- TechApiServlet.init() Begin
+INFO-(2017-09-14T18:53:20)- HibernateUtil START
+INFO-(2017-09-14T18:53:20)- HibernateUtil sessionFactory START
+INFO-(2017-09-14T18:53:20)- HibernateUtil sessionFactory EXCEPTION: org.hibernate.internal.util.config.ConfigurationException: Could not locate cfg.xml resource [src/hibernate.cfg.xml]
+	at org.hibernate.boot.cfgxml.internal.ConfigLoader.loadConfigXmlResource(ConfigLoader.java:53)
+	at org.hibernate.boot.registry.StandardServiceRegistryBuilder.configure(StandardServiceRegistryBuilder.java:163)
+	at org.hibernate.cfg.Configuration.configure(Configuration.java:258)
+	at ru.chuchalin.tech.model.dao.HibernateUtil.init(HibernateUtil.java:43)
+	at ru.chuchalin.tech.servlet.TechApiServlet.init(TechApiServlet.java:39)
+	at ru.chuchalin.tech.servlet.TechApiServlet.main(TechApiServlet.java:28)
+
+INFO-(2017-09-14T18:53:20)- init() EXCEPTION: 
+init END
+INFO-(2017-09-14T18:55:27)- TechApiServlet.init() Begin
+INFO-(2017-09-14T18:55:27)- HibernateUtil START
+INFO-(2017-09-14T18:55:27)- HibernateUtil sessionFactory START
+INFO-(2017-09-14T18:55:27)- HibernateUtil sessionFactory EXCEPTION: org.hibernate.internal.util.config.ConfigurationException: Could not locate cfg.xml resource [resources/hibernate.cfg.xml]
+	at org.hibernate.boot.cfgxml.internal.ConfigLoader.loadConfigXmlResource(ConfigLoader.java:53)
+	at org.hibernate.boot.registry.StandardServiceRegistryBuilder.configure(StandardServiceRegistryBuilder.java:163)
+	at org.hibernate.cfg.Configuration.configure(Configuration.java:258)
+	at ru.chuchalin.tech.model.dao.HibernateUtil.init(HibernateUtil.java:43)
+	at ru.chuchalin.tech.servlet.TechApiServlet.init(TechApiServlet.java:39)
+	at ru.chuchalin.tech.servlet.TechApiServlet.main(TechApiServlet.java:28)
+
+INFO-(2017-09-14T18:55:27)- init() EXCEPTION: 
+init END
+INFO-(2017-09-14T18:55:42)- TechApiServlet.init() Begin
+INFO-(2017-09-14T18:55:42)- HibernateUtil START
+INFO-(2017-09-14T18:55:42)- HibernateUtil sessionFactory START

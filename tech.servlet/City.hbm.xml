@@ -1,0 +1,8 @@
+<hibernate-mapping package="ru.chuchalin.tech.model">
+	<class name="City" table="oltp.dict_city">
+		<id name="cityID" column="id" type="java.lang.Integer">
+			<generator class="increment" />
+		</id>
+		<property name="name" column="value" type="java.lang.String" />
+	</class>	
+</hibernate-mapping>

@@ -75,4 +75,35 @@ public class FileWritter {
 			}
 		}
 	}
+	
+	
+	public static void printStackTrace(StringBuffer s, Throwable e) {
+		s.append(e.toString()).append("\n");
+		StackTraceElement[] trace = e.getStackTrace();
+		for (int i=0; i < trace.length; i++)
+			s.append("\tat " + trace[i]).append("\n");
+		
+		Throwable ourCause = e.getCause();
+		if (ourCause != null)
+			printStackTraceAsCause(s, trace, ourCause);
+    }
+	
+	private static void printStackTraceAsCause(StringBuffer s,  StackTraceElement[] causedTrace, Throwable ourCause){
+		StackTraceElement[] trace = ourCause.getStackTrace();
+		int m = trace.length-1, n = causedTrace.length-1;
+		while (m >= 0 && n >=0 && trace[m].equals(causedTrace[n])) {
+			m--; n--;
+			}
+		int framesInCommon = trace.length - 1 - m;
+		
+		s.append("Caused by: " + ourCause).append("\n");
+		for (int i=0; i <= m; i++)
+			s.append("\tat " + trace[i]).append("\n");
+		if (framesInCommon != 0)
+			s.append("\t... " + framesInCommon + " more").append("\n");
+		
+		Throwable ourCause_ = ourCause.getCause();
+		if (ourCause_ != null)
+			printStackTraceAsCause(s, trace, ourCause_);
+	}
 }
