@@ -14,11 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class City {
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	protected Integer cityID;
-	@Column(name="NAME")
 	protected String name;
 	protected boolean fake;
 

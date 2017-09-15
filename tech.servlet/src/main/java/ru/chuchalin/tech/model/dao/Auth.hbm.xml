@@ -1,0 +1,14 @@
+<hibernate-mapping package="ru.chuchalin.tech.model.dao">
+	<class name="Auth" table="auth.auth_data">
+		<id name="cityID" column="id" type="java.lang.Integer">
+			<generator class="increment" />
+		</id>
+		<property name="login" column="login" type="java.lang.String" />
+		<property name="email" column="email" type="java.lang.String" />
+		<property name="registrationDatetime" column="registration_datetime" type="java.util.Date" />
+		<property name="passhash" column="passhash" type="java.lang.String" />
+		<property name="salt" column="salt" type="java.lang.String" />
+		<property name="role" column="role" type="java.lang.Integer" />
+		<property name="confirm" column="confirm" type="java.lang.Boolean" />
+	</class>	
+</hibernate-mapping>

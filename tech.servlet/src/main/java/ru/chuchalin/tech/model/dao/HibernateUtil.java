@@ -30,6 +30,7 @@ public class HibernateUtil {
 					.addClass(ru.chuchalin.tech.model.EventAddress.class)//
 					.addClass(ru.chuchalin.tech.model.Profile.class)//
 					.addClass(ru.chuchalin.tech.model.Event.class)//
+					.addClass(ru.chuchalin.tech.model.dao.Auth.class)//
 					.buildSessionFactory();
 			;
 			vResult = this;

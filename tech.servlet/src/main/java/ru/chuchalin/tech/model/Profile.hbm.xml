@@ -4,7 +4,7 @@
 			<generator class="increment" />
 		</id>
 		<property name="firstName" column="first_name" type="java.lang.String" />
-		<!--  <many-to-one name="city" column="city_id" class="City" />  -->
+		<many-to-one name="city" column="city_id" class="City" />
 		<property name="lastName" column="last_name" type="java.lang.String" />
 		<property name="username" column="username" type="java.lang.String" />
 		<property name="nickname" column="nickname" type="java.lang.String" />
