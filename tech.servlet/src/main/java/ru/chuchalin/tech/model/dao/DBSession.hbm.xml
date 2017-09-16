@@ -1,0 +1,12 @@
+<hibernate-mapping package="ru.chuchalin.tech.model.dao">
+	<class name="DBSession" table="auth.session">
+		<id name="sessionID" column="id" type="java.lang.Integer">
+			<generator class="increment" />
+		</id>
+		<property name="authDataID" column="auth_data_id" type="java.lang.Integer" />
+		<property name="accessToken" column="access_token" type="java.lang.String" />
+		<property name="createDateTime" column="create_date_time" type="java.util.Date" />
+		<property name="expiresIn" column="expires_in" type="java.util.Date" />
+		<property name="isActual" column="is_actual" type="java.lang.Integer" />
+	</class>	
+</hibernate-mapping>

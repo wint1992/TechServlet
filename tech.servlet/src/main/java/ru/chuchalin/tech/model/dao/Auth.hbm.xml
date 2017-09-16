@@ -1,6 +1,6 @@
 <hibernate-mapping package="ru.chuchalin.tech.model.dao">
 	<class name="Auth" table="auth.auth_data">
-		<id name="cityID" column="id" type="java.lang.Integer">
+		<id name="authID" column="id" type="java.lang.Integer">
 			<generator class="increment" />
 		</id>
 		<property name="login" column="login" type="java.lang.String" />

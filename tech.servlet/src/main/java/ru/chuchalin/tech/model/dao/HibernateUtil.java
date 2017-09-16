@@ -31,10 +31,12 @@ public class HibernateUtil {
 					.addClass(ru.chuchalin.tech.model.Profile.class)//
 					.addClass(ru.chuchalin.tech.model.Event.class)//
 					.addClass(ru.chuchalin.tech.model.dao.Auth.class)//
+					.addClass(ru.chuchalin.tech.model.dao.DBSession.class)//
 					.buildSessionFactory();
 			;
 			vResult = this;
 		} catch (Throwable e) {
+			e.printStackTrace();
 			vResult = null;
 		}
 		return vResult;

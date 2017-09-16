@@ -6,11 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.jpa.QueryHints;
 
-public class Auth {	
+public class Auth {
 	protected HibernateUtil dataSession;
-	
+
 	protected Integer authID;
 	protected String login;
 	protected String email;
@@ -20,12 +21,14 @@ public class Auth {
 	protected Integer role;
 	protected boolean confirm;
 	protected boolean fake;
-	
-	public Auth(HibernateUtil _hibernate){
+
+	public Auth(HibernateUtil _hibernate) {
 		dataSession = _hibernate;
 	}
-	private Auth(){}
-	
+
+	private Auth() {
+	}
+
 	public Integer getAuthID() {
 		return authID;
 	}
@@ -89,120 +92,161 @@ public class Auth {
 	public void setConfirm(boolean confirm) {
 		this.confirm = confirm;
 	}
-	
-	private static String getSHA512PassLP(String passwordToHash, String salt){
-		String generatedPassword = null;      
-		try{
+
+	private static String getSHA512PassLP(String passwordToHash, String salt) {
+		String generatedPassword = null;
+		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
-	        md.update(passwordToHash.getBytes("UTF-8"));
-	        md.update(salt.getBytes("UTF-8"));
-	        byte[] bytes = md.digest(new String("24081992").getBytes("UTF-8"));
-	        StringBuilder sb = new StringBuilder();
-	        for(int i=0; i< bytes.length ;i++){
-	        	sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-	        }
-	        generatedPassword = sb.toString();
+			md.update(passwordToHash.getBytes("UTF-8"));
+			md.update(salt.getBytes("UTF-8"));
+			byte[] bytes = md.digest(new String("24081992").getBytes("UTF-8"));
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			generatedPassword = sb.toString();
+		} catch (Exception e) {
 		}
-		catch(Exception e){} 
 		return generatedPassword;
 	}
-	
-	public boolean registrationAdmin(String newLogin, String newPass){
+
+	public boolean registrationAdmin(String newLogin, String newPass) {
 		boolean vResult = false;
 		Date regDatetime = new Date();
 		String salt = String.valueOf(regDatetime.getTime());
 		Auth auth = new Auth();
-		auth.setConfirm(false);  // Email is confirmed
+		auth.setConfirm(false); // Email is confirmed
 		auth.setLogin(newLogin);
 		auth.setPasshash(getSHA512PassLP(newPass, salt));
 		auth.setSalt(salt);
 		auth.setRegistrationDatetime(regDatetime);
 		auth.setRole(1);
-		
+
 		if (dataSession != null && dataSession.getSessionFactory() != null) {
 			Session sf = null;
+			Transaction tx = null;
 			try {
 				sf = dataSession.getSessionFactory().openSession();
-				if (sf != null) sf.save(auth);
-				vResult = true;
-			} catch (Exception e) {				
+				if (sf != null) {
+					tx = sf.beginTransaction();
+					sf.save(auth);
+					tx.commit();
+					vResult = true;
+				}
+			} catch (Throwable e) {
+				if (tx != null)
+					tx.rollback();
+				e.printStackTrace();
 			} finally {
-				if (sf != null && sf.isOpen()) sf.close();
+				if (sf != null && sf.isOpen())
+					sf.close();
 			}
 		}
-		
+
 		return vResult;
 	}
-	
-	public boolean registration(String newLogin, String newPass){
+
+	public boolean registration(String newLogin, String newPass) {
 		boolean vResult = false;
 		Date regDatetime = new Date();
 		String salt = String.valueOf(regDatetime.getTime());
 		Auth auth = new Auth();
-		auth.setConfirm(false);  // Email is confirmed
+		auth.setConfirm(false); // Email is confirmed
 		auth.setLogin(newLogin);
 		auth.setPasshash(getSHA512PassLP(newPass, salt));
 		auth.setSalt(salt);
 		auth.setRegistrationDatetime(regDatetime);
 		auth.setRole(2);
-		
+
 		if (dataSession != null && dataSession.getSessionFactory() != null) {
 			Session sf = null;
+			Transaction tx = null;
 			try {
 				sf = dataSession.getSessionFactory().openSession();
-				if (sf != null) sf.save(auth);
-				vResult = true;
-			} catch (Exception e) {				
+				if (sf != null) {
+					tx = sf.beginTransaction();
+					sf.save(auth);
+					tx.commit();
+					vResult = true;
+				}
+			} catch (Exception e) {
+				if (tx != null)
+					tx.rollback();
+				e.printStackTrace();
 			} finally {
-				if (sf != null && sf.isOpen()) sf.close();
+				if (sf != null && sf.isOpen())
+					sf.close();
 			}
 		}
-		
+
 		return vResult;
 	}
-	
-	public boolean registration(String newLogin, String newPass, String newEmail){
+
+	public boolean registration(String newLogin, String newPass, String newEmail) {
 		boolean vResult = false;
 		Date regDatetime = new Date();
 		String salt = String.valueOf(regDatetime.getTime());
 		Auth auth = new Auth();
-		auth.setConfirm(false);  // Email is confirmed
+		auth.setConfirm(false); // Email is confirmed
 		auth.setLogin(newLogin);
 		auth.setPasshash(getSHA512PassLP(newPass, salt));
 		auth.setSalt(salt);
 		auth.setRegistrationDatetime(regDatetime);
 		auth.setRole(2);
 		auth.setEmail(newEmail);
-		
+
 		if (dataSession != null && dataSession.getSessionFactory() != null) {
 			Session sf = null;
+			Transaction tx = null;
 			try {
 				sf = dataSession.getSessionFactory().openSession();
-				if (sf != null) sf.save(auth);
-				vResult = true;
-			} catch (Exception e) {				
+				if (sf != null) {
+					tx = sf.beginTransaction();
+					sf.save(auth);
+					tx.commit();
+					vResult = true;
+				}
+			} catch (Exception e) {
+				if (tx != null)
+					tx.rollback();
+				e.printStackTrace();
 			} finally {
-				if (sf != null && sf.isOpen()) sf.close();
+				if (sf != null && sf.isOpen())
+					sf.close();
 			}
 		}
-		
+
 		return vResult;
 	}
-	
-	public Auth getAuth(String inpLogin, String inpEmail){
+
+	public Auth getAuth(String inpLoginOrEmail) {
 		Auth auth = null;
 		List resultList = new ArrayList();
 		if (dataSession != null && dataSession.getSessionFactory() != null) {
 			Session sf = null;
 			try {
 				sf = dataSession.getSessionFactory().openSession();
-				if (sf != null) resultList = sf.createQuery("from Auth where login = " + inpLogin + " or email = " + inpEmail).setHint(QueryHints.HINT_FETCH_SIZE, 10).list();
-			} catch (Exception e) {				
+				if (sf != null)
+					resultList = sf.createQuery(
+							"from Auth where login = '" + inpLoginOrEmail + "' or email = '" + inpLoginOrEmail + "'")
+							.setHint(QueryHints.HINT_FETCH_SIZE, 10).list();
+			} catch (Exception e) {
+				e.printStackTrace();
 			} finally {
-				if (sf != null && sf.isOpen()) sf.close();
+				if (sf != null && sf.isOpen())
+					sf.close();
 			}
 		}
-		if (resultList.size() > 0) auth = (Auth)resultList.get(0);
+		if (resultList.size() > 0)
+			auth = (Auth) resultList.get(0);
 		return auth;
 	};
+
+	public static boolean checkPassword(String pass, String salt, String passHash) {
+		return getSHA512PassLP(pass, salt).equals(passHash) ? true : false;
+	}
+
+	public static String generateToken(String secret) {
+		return getSHA512PassLP(secret, "");
+	}
 }
