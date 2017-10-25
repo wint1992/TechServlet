@@ -104,9 +104,31 @@ public class DBSession {
 			dbSession = (DBSession) resultList.get(0);
 		return dbSession;
 	};
+	
+	public DBSession getActualDBSession(Integer authID) {
+		DBSession dbSession = null;
+		List resultList = new ArrayList();
+		if (dataSession != null && dataSession.getSessionFactory() != null) {
+			Session sf = null;
+			try {
+				sf = dataSession.getSessionFactory().openSession();
+				if (sf != null)
+					resultList = sf.createQuery("from DBSession where authDataID = " + authID + " and isActual = 1")
+							.setHint(QueryHints.HINT_FETCH_SIZE, 10).list();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (sf != null && sf.isOpen())
+					sf.close();
+			}
+		}
+		if (resultList.size() > 0)
+			dbSession = (DBSession) resultList.get(0);
+		return dbSession;
+	};
 
 	public String createDBSession(Integer authID, Date createDate) {
-		return createDBSession(authID, createDate, new GregorianCalendar(9999, 12, 31).getTime());
+		return createDBSession(authID, createDate, new GregorianCalendar(9999, 12, 30).getTime());
 	}
 
 	public String createDBSession(Integer authID, Date createDate, Date expires) {

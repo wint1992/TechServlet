@@ -28,10 +28,12 @@ public class GraphQLSchemaModel {
 	public GraphQLSchemaModel(HibernateUtil _hibernate) {
 		dataFetcher = new GraphQLSchemaDataFetch(_hibernate);
 
-		CityType = newObject().name("City").field(newFieldDefinition().name("cityID").type(Scalars.GraphQLInt))
+		CityType = newObject().name("City")
+				.field(newFieldDefinition().name("cityID").type(Scalars.GraphQLInt))
 				.field(newFieldDefinition().name("name").type(Scalars.GraphQLString)).build();
 
-		ProfileType = newObject().name("Profile").field(newFieldDefinition().name("profileID").type(Scalars.GraphQLInt))
+		ProfileType = newObject().name("Profile")
+				.field(newFieldDefinition().name("profileID").type(Scalars.GraphQLInt))
 				.field(newFieldDefinition().name("firstName").type(Scalars.GraphQLString))
 				.field(newFieldDefinition().name("lastName").type(Scalars.GraphQLString))
 				.field(newFieldDefinition().name("username").type(Scalars.GraphQLString))
@@ -56,7 +58,8 @@ public class GraphQLSchemaModel {
 				.field(newFieldDefinition().name("fullAddress").type(Scalars.GraphQLString))
 				.field(newFieldDefinition().name("gps").type(Scalars.GraphQLString)).build();
 
-		EventType = newObject().name("Event").field(newFieldDefinition().name("eventID").type(Scalars.GraphQLInt))
+		EventType = newObject().name("Event")
+				.field(newFieldDefinition().name("eventID").type(Scalars.GraphQLInt))
 				.field(newFieldDefinition().name("eventName").type(Scalars.GraphQLString))
 				.field(newFieldDefinition().name("eventAddress").type(EventAddressType))
 				.field(newFieldDefinition().name("beginDateTime").type(Scalars.GraphQLString))
