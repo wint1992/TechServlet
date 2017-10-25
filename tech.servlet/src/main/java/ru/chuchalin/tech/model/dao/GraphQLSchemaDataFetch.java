@@ -32,6 +32,8 @@ public class GraphQLSchemaDataFetch {
 									.setHint(QueryHints.HINT_FETCH_SIZE, 10).list();
 					}
 				} catch (Exception e) {
+					System.out.println("eventFetcher Exception");
+					e.printStackTrace();
 				} finally {
 					if (sf != null && sf.isOpen()) {
 						sf.close();
@@ -144,6 +146,8 @@ public class GraphQLSchemaDataFetch {
 									.setHint(QueryHints.HINT_FETCH_SIZE, 10).list();
 					}
 				} catch (Exception e) {
+					System.out.println("eventAddressFetcher Exception");
+					e.printStackTrace();
 				} finally {
 					if (sf != null && sf.isOpen()) {
 						sf.close();

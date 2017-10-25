@@ -4,7 +4,7 @@
 			<generator class="increment" />
 		</id>
 		<property name="eventName" column="event_name" type="java.lang.String" />
-		<many-to-one name="eventAddress" column="event_address_id" class="EventAddress" />
+		<many-to-one name="eventAddress" column="event_address_id" class="EventAddress" lazy="false" fetch="join"/>
 		<property name="beginDateTime" column="begin_date_time" type="java.util.Date" />
 		<property name="endDateTime" column="end_date_time" type="java.util.Date" />
 		<property name="description" column="description" type="java.lang.String" />
@@ -13,7 +13,7 @@
 		<property name="backgroundPhoto" column="background_photo" type="java.lang.String" />
 		<property name="cost" column="cost" type="java.math.BigDecimal" />
 		<property name="priority" column="priority" type="java.lang.Integer" />
-	 	<set name="eventMusicStyles" lazy="false" fetch="join" cascade="save-update, delete" table="event_music_style">
+	 	<set name="eventMusicStyles" lazy="false" fetch="join" cascade="save-update, delete" table="oltp.event_music_style">
 			<key>
                 <column name="event_id" not-null="true" />
             </key>
